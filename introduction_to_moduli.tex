@@ -1,0 +1,321 @@
+
+\documentclass[11pt,twoside]{report}
+\usepackage[english]{babel}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{palatino}
+
+\usepackage{newpxmath}
+
+\usepackage{yfonts}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{faktor}
+\usepackage{xcolor}
+\usepackage{xfrac}
+\usepackage{tikz,tikz-cd}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{setspace}
+
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\M}[4]{\overline{\pazocal M}_{#1,#2}(#3,#4)}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\kk}{\mathbf k}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\tR}{\widetilde{R}}
+\newcommand{\tm}{\widetilde{\mathfrak m}}
+\newcommand{\OO}{\mathcal O}
+\renewcommand{\to}{\rightarrow}
+\newcommand{\pr}{\rm{pr}}
+\newcommand{\Aaff}{\mathbb A}
+\newcommand{\N}{\mathbb N}
+\newcommand{\oM}{\overline{\pazocal M}}
+\newcommand{\tM}{\widetilde{\pazocal M}}
+\newcommand{\R}{\operatorname{R}}
+\newcommand{\Gm}{\mathbb{G}_{\rm{m}}}
+\newcommand{\Ga}{\mathbb{G}_{\rm{a}}}
+\newcommand{\vir}[1]{[#1]^{\rm{vir}}}
+\newcommand{\virloc}[1]{[#1]^{\rm{vir}}_{\rm{loc}}}
+\newcommand{\dvr}{\Delta}
+
+\newcommand{\bq}{\begin{equation}}
+\newcommand{\eq}{\end{equation}}
+\newcommand{\ba}{\begin{aligned}}
+\newcommand{\ea}{\end{aligned}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bsm}{\left(\begin{smallmatrix}}
+\newcommand{\esm}{\end{smallmatrix}\right)}                   
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+\newcommand{\barr}{\begin{displaymath}\begin{array}{cccc}}
+\newcommand{\earr}{\end{array}\end{displaymath}}
+\newcommand{\barrl}{\begin{displaymath}\begin{array}{lcl}}
+\newcommand{\earrl}{\end{array}\end{displaymath}}
+\newcommand{\barl}{\begin{displaymath}\begin{array}{l}}
+\newcommand{\earl}{\end{array}\end{displaymath}}
+\newcommand{\bxym}{ \begin{displaymath}\xymatrix }
+\newcommand{\exym}{\end{displaymath}}
+\newcommand{\bcd}{\begin{center}\begin{tikzcd}}
+\newcommand{\ecd}{\end{tikzcd}\end{center}}
+
+\newcommand{\tr}{{\rm tr}}
+\newcommand{\Isom}{\text{Isom}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\uSpec}{\underline{\operatorname{Spec}}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\hhom}{\mathcal{H}\!om}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Exc}{\operatorname{Exc}}
+\newcommand{\lev}{\operatorname{lev}}
+\newcommand{\id}{{\rm id}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}{Conjecture}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{defprop}[thm]{Definition-Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{teo*}{Theorem}
+\newtheorem*{matteo*}{Main Theorem}
+\newtheorem{ipotesi}{ipotesi}
+\newtheorem*{nota}{Nota}
+\newtheorem{claim}{Claim}
+\newtheorem{question}[thm]{Question}
+\newtheorem*{fact}{Fact}
+
+\theoremstyle{definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{exe}[thm]{Exercise}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{com}[thm]{Comment}
+\newtheorem{num}{Number}
+\newtheorem*{sketch}{Sketch}
+\newtheorem*{caveat}{Caveat}
+\newtheorem{rem}[thm]{Remark}
+
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
+\newcustomtheorem{customrmk}{Remark}
+
+\newcommand{\todo}[1]{\vspace{5mm}\par \noindent
+\framebox{\begin{minipage}[c]{0.95 \textwidth} \tt #1\end{minipage}} \vspace{5mm} \par}
+
+\def\ti{-\allowhyphens}
+\newcommand{\thismonth}{\ifcase\month % case 0 --- impossible!
+  \or January\or February\or March\or April\or May\or June%
+  \or July\or August\or September\or October\or November%
+  \or December\fi}
+\newcommand{\thismonthyear}{{\thismonth} {\number\year}}
+\newcommand{\thisdaymonthyear}{{\number\day} {\thismonth} {\number\year}}
+
+
+\title{Lecture notes - Introduction to moduli theory}
+\author{Luca Battistella}
+
+
+%\date{\today}
+
+\setcounter{tocdepth}{1}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{The functorial point of view in algebraic geometry and examples}
+
+\section{Yoneda's lemma}
+
+Motivation: Suppose we start with a variety $X$ defined over $\mathbb Q$. It may very well have no rational points (i.e. sections $\Spec(\QQ)\to X$) but have points over a number field $\QQ\subseteq \kk$ (i.e. $\QQ$-morphisms $\Spec(\kk)\to X$). More generally, it is interesting to ``test'' an $S$-scheme $X$ by looking at $S$-morphisms from $S$-schemes $T$ to $X$ - in fact, fat points and curves already tell you a lot about the geometry of $X$. We will see that testing $X$ with all morphisms from $S$-schemes allows you to recover $X$ completely.
+
+\begin{example}
+ The $\RR$-scheme $\Spec \RR[x]/(x^2+1)$ has no $\RR$-points (or \emph{rational points}), but it has two $\CC$-points.
+\end{example}
+
+We will often assume that $S=\Spec(R)$ is an affine scheme. If we also suppose that $X=\Spec R[x_1,\ldots,x_n]/(f_1,\ldots,f_m)$, then looking for $R$-points of $X$ is the same as looking for solutions of the system of polynomial equations
+\begin{equation*}
+ \left\{
+ \begin{aligned}
+  &f_1(x_1,\ldots,x_n)&=0\\
+  &\ldots&{}\\
+  &f_m(x_1,\ldots,x_n)&=0\\
+ \end{aligned}
+ \right.
+\end{equation*}
+It is often the case that one has to pass to an extension of $R$ (i.e. a finitely generated $R$-algebra $A$) in order to find any solution - which is to say a diagram
+\bcd
+& X\ar[d]\\
+\Spec(A)\ar[ru,dashed]\ar[r] & \Spec(R)\\
+\ecd
+The set of morphisms from $T=\Spec(A)$ to $X$ is denoted by $h_X(T)$, $h_X(A)$, $X(T)$, or $X(A)$. For a morphism of $R$-algebras $A\to B$, corresponding to $T^\prime=\Spec(B)\to T$, there is an induced map $X(A)\to X(B)$ - or $X(T)\to X(T^\prime)$ - by composition
+\bcd
+& & X\ar[d]\\
+T^\prime=\Spec(B)\ar[rru,dashed]\ar[r]&T=\Spec(A)\ar[ru]\ar[r] & S=\Spec(R)\\
+\ecd
+Thus, $h_X$ determines a contravariant functor $(Sch/S)\to(Set)$ - or, restricting to affine schemes, a covariant functor $(Alg/R)\to(Set)$.
+
+More generally, given a category $\mathcal C$ and an object $X$ of $\mathcal C$, $h_X=\Hom_{\mathcal C}(-,X)$ defines an object of the category $\widehat{\mathcal C}$ of functors $\mathcal C^\text{op}\to(Set)$ - with natural transformations as arrows. Given morphisms $f\colon X\to Y$ and $\phi\colon T^\prime\to T$, there is a commutative diagram
+\bcd
+h_X(T^\prime)\ar[r,"f\circ"]\ar[d,"\circ\phi"] & h_Y(T^\prime)\ar[d,"\circ\phi"]\\
+h_X(T)\ar[r,"f\circ"] & h_Y(T)
+\ecd
+In particular, there is an induced map $\Hom_\mathcal C(X,Y)\to \Hom_{\widehat{\mathcal C}}(h_X,h_Y)$.
+\begin{lem}[weak Yoneda]
+ $\Hom_\mathcal C(X,Y)\to \Hom_{\widehat{\mathcal C}}(h_X,h_Y)$ is a bijection.
+\end{lem}
+Thus the association $X\mapsto h_X$ embeds $\mathcal C$ as a full subcategory of $\widehat{\mathcal C}$. Recall
+\begin{lem}
+ A functor $F\colon\mathcal A\to\mathcal B$ is an \emph{equivalence} of categories if and only if it is \emph{fully faithful} and \emph{essentially surjective}.
+\end{lem}
+An object of $\widehat{\mathcal C}$ is called \emph{representable} if it is isomorphic to one of the form $h_X$ for some $X\in\operatorname{ob}(\mathcal C)$. Therefore $\mathcal C$ is equivalent to the full subcategory of representable objects in $\widehat{\mathcal C}$.
+
+Let $F\in\operatorname{ob}(\widehat{\mathcal C})$, $X\in\operatorname{ob}(\mathcal C)$, and $\xi\in F(X)$. Then $\xi$ induces $h_X\to F$ by associating to $\phi\colon T\to X$ the element $(F\phi)(\xi)$ of $F(T)$. On the other hand, given a natural transformation $h_X\to F$, we can produce the object of $F(X)$ associated to $\id_X$.
+\begin{lem}[Yoneda]
+ With notation as above, these functions are inverse to each other, thus establishing a bijection between $F(X)$ and $\Hom_{\widehat{\mathcal C}}(h_X,F)$.
+\end{lem}
+\begin{exe}
+ Yoneda implies weak Yoneda.
+\end{exe}
+Suppose that $F\simeq h_X$ is representable; then the element $\xi\in F(X)$ corresponding to $\id_X$ is called the \emph{universal object}: it has the property that for every $\tau\in F(T)$ there exists a unique $\phi\colon T\to X$ such that $\tau=(F\phi)(\xi)$, and it is therefore unique up to unique isomorphism.
+\begin{exa}
+ $\mathcal P\colon(Set)\to(Set)$ the power set is represented by $X=\{0,1\}$ with universal object $\{1\}$.
+\end{exa}
+\begin{exa}
+ $\mathcal P^\text{open}\colon(Top)\to(Set)$ associating to $T$ the set of open subsets in the topology of $T$ is represented by the same object as in the previous example, endowed with the topology $\{\emptyset,\{1\},X\}$. Note that arrows in $(Top)$ are continuous maps.
+\end{exa}
+\begin{exa}
+ Let $\kk$ be a field. $\mathcal P^\text{open}\colon(Sch/\kk)\to(Set)$ associating to a $\kk$-scheme the set of its open subschemes is not representable. Suppose it were representable by a $\kk$-scheme $X$ with universal open subscheme $U$. Then for every $\kk$-scheme $T$, there would be a unique morphism $\phi\colon T\to X$ such that $\phi^{-1}(U)=T$; but then there would be a unique morphism $T\to U$, and therefore $U=\Spec(\kk)$. Since $\kk$-points are closed, this would imply that all open subschemes of a $\kk$-scheme are also closed, which is false. (I learned this, as many other things, from Angelo Vistoli.)
+\end{exa}
+\begin{exa}
+ The functor associating to an $S$-scheme $X$ its global regular functions $\Gamma(X,\OO_X)$ is represented by $\Aaff^1_S$. It is in fact a functor in rings; when we think of it as a functor in groups, or \emph{group scheme}, we usually denote it by $\mathbb G_{a,S}$.
+\end{exa}
+\begin{exa}
+ The functor associating to an $S$-scheme $X$ its invertible functions $\Gamma(X,\OO_X^*)$ is represented by the group scheme $\mathbb G_{m,S}=\uSpec_S\OO_S[z,z^{-1}]$.
+\end{exa}
+
+\section{Example: projective bundles}
+In this section we introduce some more useful general concepts: fibre products, representable maps, open and closed subfunctors.
+
+\begin{exa} The functor of points of projective space is
+ \[h_{\PP^r_S}(T)=\{(L,s_0,\ldots,s_r):L\in\Pic(T),s_i\in\Gamma(T,L):\forall \mathfrak p\in T,\exists i:s_i(\mathfrak p)\neq 0\}/\sim\]
+ The equivalence is given by associating to an $S$-map $\phi\colon T\to\PP^r_S$ the isomorphism class of $(\phi^*\OO_{\PP^r}(1),\phi^*x_0,\ldots,\phi^*x_r)$ for a choice of coordinates on $\PP^r$.
+ There is a map $h_{\Aaff^{r+1}_S\setminus S}\to h_{\PP^r_S}$ given by $(f_0,\ldots,f_r)\mapsto[\mathcal O,f_0,\ldots,f_r]$. In the following, we are going to give a description by gluing charts.
+\end{exa}
+\begin{exe}
+ Prove that $\Aut(\PP^r)=PGL_{r+1}$.
+\end{exe}
+
+\begin{dfn}
+ Let $F_1,F_2,G\in\operatorname{ob}(\widehat{\mathcal C}=\operatorname{Fun}\colon \mathcal C^{\text{op}}\to(Set))$ be functors, with natural transformations $\phi_1\colon F_1\to G$ and $\phi_2\colon F_2\to G$. Let $F_1\times_G F_2$ be defined by
+ \[F_1\times_G F_2(T)=\{(\xi_1,\xi_2)\in F_1(T)\times F_2(T):\phi_1(\xi_1)=\phi_2(\xi_2)\}.\]
+\end{dfn}
+
+\begin{exe}
+ $F_1\times_G F_2$ is a fiber product in $\widehat{\mathcal C}$.
+\end{exe}
+
+\begin{exe}
+ If $F_1=h_{X_1}, F_2=h_{X_2}, G=h_Y$, then $F_1\times_G F_2=h_{X_1\times_Y X_2}$.
+\end{exe}
+
+\begin{dfn}
+ An arrow $\phi\in\Hom_{\widehat{\mathcal C}}(F,G)$ is called \emph{representable} if for every $Y\in\mathcal C$ and every $h_Y\to G$, the fiber product $F\times_G h_Y$ is representable ($\simeq h_X$).
+\end{dfn}
+\begin{rem}
+ If $G$ is representable, then $F\to G$ is representable iff $F$ is.
+\end{rem}
+\begin{dfn}
+ Let $\mathcal P$ be a property of arrows in $\mathcal C$, which is stable under base-change. A representable arrow $F\to G$ in $\widehat{\mathcal C}$ is said to have property $\mathcal P$ if, for every $h_Y\to G$ and $h_X=h_Y\times_G F$, $X\to Y$ has it.
+\end{dfn}
+\begin{exa}
+ Open and closed subfunctors $F\subseteq G\colon(Sch)\to(Set)$.
+\end{exa}
+\begin{exe}
+ Consider the functor on $S$-schemes $U_j(T)=\{(L,s_0,\ldots,s_r):L\in\Pic(T),s_i\in\Gamma(T,L):\forall \mathfrak p\in T,s_i(\mathfrak p)\neq 0\}/\sim$. Then $U_j\to h_{\PP^r_S}$ is an open subfunctor. Hint: for every $f\colon Y\to\PP^r$, $U_j\times_{h_{\PP^r}}h_Y$ is represented by the open subscheme of $Y$ where $f^*(s_j)\in\Gamma(Y,f^*\OO_{\PP^r}(1))$ is non-zero. Besides, $U_j\simeq h_{\Aaff^r_S}$ for every $j$. What is $U_i\times_{h_{\PP^r}}U_j$?
+\end{exe}
+Consider now the following more general problem: Let $S=\Spec(R)$ and $E$ an $R$-module (or equivalently a quasi-coherent sheaf $\mathcal E$ on $S$). Define $Q_E\colon(Sch)^\text{op}\to(Set)$ by $Q_E(f\colon T\to S)=\{f^*\mathcal E\twoheadrightarrow\mathcal L:\mathcal L\in\Pic(T)\}/\sim$.
+\begin{prop}
+ $Q_E$ is represented by an $S$-scheme $\PP(\mathcal E)$. Furthermore, $\PP(\mathcal E)\to S$ is projective when $E$ is a finitely generated $R$-module.
+\end{prop}
+We shall prove this in two steps.
+
+\textbf {Step I:} \emph{when $E$ is finitely generated.} Observe that, if $E=R^{r+1}$, then $Q_E=h_{\PP^r}$. Indeed, the condition that for every $\mathfrak p\in T$ at least one of the $s_i$ does not vanish at $\mathfrak p$ is equivalent to the surjectivity of $\OO_T^{r+1}\to L$. Now, for every finitely generated $E$, we can find an exact sequence (presentation)
+\[R^{I}\to F:=R^{r+1}\to E\to 0\]
+with $I$ possibly infinite. The representability claim follows from the following
+\begin{lem}
+ With notation as above, $Q_E\subseteq Q_F=h_{\PP^r}$ is a closed subfunctor.
+\end{lem}
+\begin{proof}
+ Suppose we are given $f\colon T\to \PP^r$. A surjection $\OO_T^{r+1}\twoheadrightarrow \mathcal L$ factors through $\mathcal E\twoheadrightarrow\mathcal L$ if and only if the composite $\OO_T^I\to \mathcal L$ vanishes; this is an intersection of closed conditions. (Or one could say that the closed subscheme of $T$ induced by $Q_E\subseteq h_{\PP^r}$ is cut by the ideal $(\mathcal L^\vee)^I\twoheadrightarrow \mathcal I\subseteq\OO_T$.)
+\end{proof}
+
+\textbf{Step II:} \emph{in general.} Recall the following construction: to $E$ we can associate the symmetric algebra $\mathcal S^\bullet_E:=\bigoplus_{n\in\mathbb N}\operatorname{Sym}^n E$. This is an $\mathbb N$-graded algebra generated in degree one  ($\mathcal S^1_E=E$) and such that $\mathcal S^0_E=R$. It has the universal property
+\[ \Hom_{R-Alg}(\mathcal S^\bullet_E,A)=\Hom_{R-Mod}(E,A)\]
+
+To every quasi-coherent sheaf of graded $\OO_S$-algebras $\mathcal S^\bullet$ we can associate an $S$-scheme by the \emph{relative Proj} construction, $P=\underline{\operatorname{Proj}}_S(\mathcal S^\bullet)$, which is constructed as follows: for an open affine $U\subseteq S$, take $P_{|U}=\Proj(\mathcal S^\bullet(U))\to U=\Proj(\mathcal S^0(U))$; and notice that for an inclusion of open affine subsets $V\subseteq U$ we get $\mathcal S^\bullet(V)=\mathcal S^\bullet(U)\otimes_{\OO_S(U)}\OO_S(V)$, therefore we can glue. It comes with an invertible sheaf $\OO_P(1)$: locally on $U\subseteq S$, $\OO_P(1)$ is the sheaf associated by the $\ \tilde{}\ $ construction to the graded module $\mathcal S^\bullet(1)(U)$, whose degree $d$ piece is $\mathcal S^{d+1}(U)$.
+
+All of these constructions are functorial on the base $S$.
+
+Going back to our situation, we let $\PP(\mathcal E)=\underline{\Proj}(\mathcal S^\bullet_E)$.
+\begin{rem}
+ If $E$ is free of rank $r+1$, $\mathcal S^\bullet_E$ is isomorphic to a polynomial algebra in $r+1$ variables over $R$, and $\PP(\mathcal E)=\PP^r_S$. If $\mathcal E \twoheadrightarrow\mathcal F$ is a surjective homomorphism of sheaves, then $\PP(\mathcal F)\subseteq\PP(\mathcal E)$ is a closed $S$-subscheme, and the $\OO(1)$ is preserved under restriction. If $E$ is finitely generated, for every point $\mathfrak p$ of $S$, $E_{\mathfrak p}=E\otimes_R \kk(\mathfrak p)$ is a finite dimensional $\kk(\mathfrak p)$-vector space, hence $\PP(\mathcal E)_{|\mathfrak p}=\PP^{n_{\mathfrak p}}_{\kk(\mathfrak p)}$, and the $\OO_{\PP(\mathcal E)}(1)$ restricts to the usual $\OO(1)$. If $E$ is finitely generated, by choosing a surjection $R^{r+1}\twoheadrightarrow E$ we can show that $\PP(\mathcal E)\to S$ is projective (locally on the base). In fact, we could have started the discussion by taking a quasi-coherent sheaf $\mathcal E$ on any scheme $S$. Finally, notice that tensoring$\mathcal E$ by a line bundle does not change $\PP(\mathcal E)$ but does change $\OO_{\PP(\mathcal E)}(1)$.
+\end{rem}
+\begin{lem}
+ $\PP(\mathcal E)$ represents the functor $Q_E$.
+\end{lem}
+\begin{proof}
+ Let $p$ denote the projection $\PP(\mathcal E)\to S$. The morphism of graded modules
+ \[E\otimes_R\mathcal S^\bullet_E\twoheadrightarrow \mathcal S^\bullet_E(1)\]
+ corresponds to a surjection $p^*\mathcal E\twoheadrightarrow\OO_{\PP(\mathcal E)}(1)$, which we can take to be the universal object, inducing $h_{\PP(\mathcal E)}\to Q_E$. On the other hand, for an $S$-scheme $f\colon T\to S$, and an object $f^*\mathcal E\twoheadrightarrow\mathcal L$ of $Q_E(T)$, we get
+ \[T=\PP(\mathcal L)\subseteq \PP(f^*\mathcal E)=\PP(\mathcal E)\times S T\]
+ which is the same as an $S$-morphism $T\to\PP(\mathcal E)$.
+\end{proof}
+\begin{exe}
+ Show that the transformations above are inverse to one another, thus determining $Q_E\simeq h_{\PP(\mathcal E)}$. Fix all the details in the previous remark. Show that if $\mathcal E$ and $\mathcal F$ are locally free and $\PP(\mathcal E)\simeq_\phi\PP(\mathcal F)$, then there is a line bundle $\mathcal M$ on $S$ such that $\mathcal E\simeq\mathcal F\otimes\mathcal M$. Hint: $\OO_{\PP(\mathcal E)}(1)\otimes\phi^*\OO_{\PP(\mathcal F)}(-1)$ is pulled back from $S$.
+\end{exe}
+
+
+\section{Example: Grassmannians}
+
+\newpage
+
+\noindent Luca Battistella\\
+Max-Planck-Institut f\"ur Mathematik - Bonn \\
+\texttt{battistella@mpim-bonn.mpg.de}\\
+
+
+\end{document}
+
